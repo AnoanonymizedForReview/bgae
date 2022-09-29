@@ -1,0 +1,17 @@
+{
+	"image": "bgae:latest",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-python.python",
+				"ms-python.vscode-pylance",
+				"redhat.vscode-yaml"
+			]
+		}
+	},
+	"mounts": [],
+	"appPort": [
+		"6006:6006"
+	],
+	"runArgs": ["--gpus", "all"]
+}

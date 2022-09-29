@@ -1,0 +1,54 @@
+available_datasets:
+  [
+    Cora,
+    CiteSeer,
+    PubMed,
+    WikiCS,
+    CoauthorCS,
+    CoauthorPhysics,
+    AmazonPhoto,
+    AmazonComputers,
+  ]
+target_dataset: Cora
+base:
+  mute_recon: false # options: true, false
+  # analyse_for: link_prediction # options: link_prediction, clustering, classification
+  analyse_for: classification # options: link_prediction, clustering, classification
+  z_dim: 512
+  opt:
+    lr: 1.0e-2
+    decay: 5.0e-6
+  attention: true
+  variational: false # options: true, false
+  gdc:
+    diffusion:
+      method: ppr
+      alpha: 0.1
+      eps: 1.0e-4
+      # method: heat
+      # t: 5
+    sparsification:
+      method: threshold
+      avg_degree: 25
+  barlow_loss_weight: 1
+  barlow_lambda: 5.0e-3
+
+CoauthorPhysics:
+  z_dim: [128]
+
+
+PubMed:
+  z_dim: 128
+CoauthorCS:
+  gdc:
+    diffusion:
+      method: heat
+      t: 5
+    #      method: ppr
+    #      alpha: 0.1
+    #      eps: 1.0e-4
+    sparsification:
+      method: threshold
+      eps: 0.05
+#      avg_degree: [ 5 ]
+#      avg_degree: [ 50 ]

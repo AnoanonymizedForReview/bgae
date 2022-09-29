@@ -1,0 +1,59 @@
+# target_datasets: [ Cora, CiteSeer, PubMed, WikiCS, CoauthorCS, CoauthorPhysics, AmazonPhoto, AmazonComputers ]
+target_datasets: [Cora]
+base:
+  mute_recon: [false]
+  analyse_for: link_prediction
+  #  analyse_for: clustering
+  #  analyse_for: classification
+  z_dim: [512, 256, 128, 64, 32]
+  opt:
+    lr: [1.0e-2]
+    decay: [5.0e-6]
+  attention: [true, false]
+  variational: [true, false]
+  gdc:
+    diffusion:
+      # method: heat
+      # t: 5
+      method: ppr
+      alpha: 0.1
+      eps: 1.0e-4
+    sparsification:
+      method: threshold
+      avg_degree: [25, 50, 100, 200, 300]
+  barlow_loss_weight: [1]
+  #  barlow_loss_weight: [ 1, 10, 100, 500, 1000, 5000 ]
+  barlow_lambda: [5.0e-3]
+#  barlow_lambda: [ 1.0e-3, 5.0e-3, 1.0e-2, 5.0e-2 ]
+
+
+# CoauthorPhysics:
+#   z_dim: [128]
+
+# # only for heat kernel
+# PubMed:
+#   gdc:
+#     diffusion:
+#       method: heat
+#       t: 5
+#     #      method: ppr
+#     #      alpha: 0.1
+#     #      eps: 1.0e-4
+#     sparsification:
+#       method: threshold
+#       eps: 0.01
+# #      avg_degree: [ 5 ]
+# #      avg_degree: [ 50 ]
+# CoauthorCS:
+#   gdc:
+#     diffusion:
+#       method: heat
+#       t: 5
+#     #      method: ppr
+#     #      alpha: 0.1
+#     #      eps: 1.0e-4
+#     sparsification:
+#       method: threshold
+#       eps: 0.05
+# #      avg_degree: [ 5 ]
+# #      avg_degree: [ 50 ]
